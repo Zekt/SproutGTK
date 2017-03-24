@@ -11,6 +11,6 @@ void change_button_label(GtkWidget *widget, const char* s) {
 }
 
 // 此函數能得知某個按鈕上的文字
-const char* get_button_label(GtkWidget *widgets[3][3], int x, int y) {
-	return gtk_button_get_label(GTK_BUTTON(widgets[x][y]));
+const char* get_button_label(GtkWidget *widget) {
+	return gtk_button_get_label(GTK_BUTTON(widget));
 }

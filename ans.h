@@ -23,10 +23,12 @@ GtkWidget *button[3][3];
  * change_button_label(widget, "yoo");
  * （在下方函數內呼叫）會將被按下的按鈕上的文字換為 "yoo"，
  *
- * get_button_label(button, 1, 1);
- * 會得到位置為 [1][1] 的按鈕上的文字，回傳值為 char*。
+ * get_button_label(button[1][2]);
+ * 會得到位置為 [1][2] 的按鈕上的文字，回傳值為 char*。
  */
-static void when_button_clicked(GtkWidget *widget, gpointer data) {
+static void when_button_clicked(GtkWidget *pressed_button, gpointer data) {
 	// 請將答案寫在這裡
+	// 範例（可以將下一行註解拿掉看執行結果）：
+	// change_label_text(label, "Jinkela");
 }
 

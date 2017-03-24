@@ -6,7 +6,7 @@ static void quit( GtkWidget *widget, gpointer data ) {
 
 
 static gboolean delete_event( GtkWidget *widget, GdkEvent *event, gpointer data ) {
-	g_print ("delete event occurred\n");
+	// g_print ("delete event occurred\n");
 	return FALSE;
 }
 
@@ -34,7 +34,7 @@ void init(int argc, char *argv[]) {
 	g_signal_connect (window, "destroy",
 			G_CALLBACK (destroy), NULL);
 
-	vbox = gtk_vbox_new(TRUE, 20);
+	vbox = gtk_vbox_new(FALSE, 0);
 
 	gtk_container_set_border_width (GTK_CONTAINER (window), 100); 
 
@@ -47,7 +47,7 @@ void init(int argc, char *argv[]) {
 		for(int j = 0; j < 3; ++j) {
 			create_button(table, button[i][j], j, j+1, i, i+1);
 		}
-	gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 5);
+	gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 100);
 
 
 	button_q = gtk_button_new_with_label ("Quit");
@@ -55,7 +55,7 @@ void init(int argc, char *argv[]) {
 			G_CALLBACK (quit), NULL);
 	g_signal_connect_swapped (button_q, "clicked",
 			G_CALLBACK (gtk_widget_destroy), window);
-	gtk_box_pack_start(GTK_BOX(vbox), button_q, FALSE, FALSE, 5);
+	gtk_box_pack_start(GTK_BOX(vbox), button_q, FALSE, FALSE, 0);
 }
 
 void run() {
