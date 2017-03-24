@@ -1,4 +1,3 @@
-#include<gtk/gtk.h>
 #include"ans.h"
 
 static void quit( GtkWidget *widget, gpointer data ) {
