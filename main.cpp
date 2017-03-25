@@ -21,7 +21,7 @@ void create_button(GtkWidget *table, GtkWidget *butt, int l, int t, int r, int d
 	gtk_table_attach_defaults(GTK_TABLE(table), butt, l, t, r, d);
 	g_signal_connect (butt, "clicked",
 			G_CALLBACK (when_button_clicked), NULL);
-	button[r][l] = g_object_ref(butt);
+	button[r][l] = (GtkWidget*)g_object_ref(butt);
 }
 
 void init(int argc, char *argv[]) {
