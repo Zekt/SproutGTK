@@ -14,7 +14,7 @@ GtkWidget *button[3][3];
 
 /*
  * 當中間的九宮格被按下時會呼叫 when_button_clicked 此函數
- * widget 是傳入的參數，代表被按下的按鈕本身。
+ * pressed_button 是傳入的參數，代表被按下的按鈕本身。
  * 一些能夠使用的函數範例：
  *
  * change_label_text(label, "yo");
