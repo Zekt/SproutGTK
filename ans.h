@@ -25,7 +25,15 @@ GtkWidget *button[3][3];
  *
  * get_button_label(button[1][2]);
  * 會得到位置為 [1][2] 的按鈕上的文字，回傳值為 char*。
+ *
+ * 提示：檢查得到的字串是否為空的方法：
+ * char* s = get_button_label(pressed_button));
+ * if(s[0] == '\0')
+ *     g_print("it's empty!");
  */
+
+int count = 0;
+
 static void when_button_clicked(GtkWidget *pressed_button, gpointer data) {
 	// 請將答案寫在這裡
 	// 範例（可以將下一行註解拿掉看執行結果）：
