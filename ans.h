@@ -29,7 +29,8 @@ GtkWidget *button[3][3];
  * 提示：檢查得到的字串是否為空的方法：
  * char* s = get_button_label(pressed_button));
  * if(s[0] == '\0')
- *     g_print("it's empty!");
+ * 或是
+ * if(std::strcmp(s, "") != 0)（要 include<cstring>）
  */
 
 int count = 0;
@@ -37,6 +38,6 @@ int count = 0;
 static void when_button_clicked(GtkWidget *pressed_button, gpointer data) {
 	// 請將答案寫在這裡
 	// 範例（可以將下一行註解拿掉看執行結果）：
-	// change_label_text(label, "Jinkela");
+	//change_label_text(label, "Jinkela !");
 }
 
