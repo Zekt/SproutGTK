@@ -46,9 +46,5 @@ static void when_button_clicked(GtkWidget *pressed_button, gpointer data) {
 	//change_label_text(label, "Jinkela !");
 }
 
-long long int c = 1;
-
 gboolean called_every_interval(gpointer data) {
-	printf("%d\n", c);
-	c++;
 }
