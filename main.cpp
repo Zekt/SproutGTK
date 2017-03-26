@@ -28,7 +28,7 @@ void init(int argc, char *argv[]) {
 
 	gtk_init (&argc, &argv);
 
-	g_timeout_add(INTERVAL, called_every_interval, NULL);
+	g_timeout_add(INTERVAL, on_every_interval, NULL);
 
 	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	g_signal_connect (window, "delete-event",

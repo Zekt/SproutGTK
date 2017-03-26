@@ -1,6 +1,13 @@
 #include<stdio.h>
 #include"tools.h"
 
+// HEIGHT 跟 WIDTH 決定了中間按鈕的格子數
+#define HEIGHT 3
+#define WIDTH 3
+
+// INTERVAL 代表 called_every_interval 每多久會被呼叫一次（單位是毫秒(ms)，1s = 1000ms）
+#define INTERVAL 1000
+
 GtkWidget *window;
 GtkWidget *button_q;
 GtkWidget *table;
@@ -9,17 +16,12 @@ GtkWidget *vbox;
 
 // label 是畫面上方的文字 GtkWidget *label;
 GtkWidget *label;
-// button 是代表畫面上九宮格的陣列，每個元素為一個按鈕
-GtkWidget *button[3][3];
+// button 是代表畫面上九宮格（或更大）的陣列，每個元素為一個按鈕
+GtkWidget *button[HEIGHT][WIDTH];
 
-// HEIGHT 跟 WIDTH 決定了中間按鈕的格子數
-const int HEIGHT = 10;
-const int WIDTH = 10;
-
-// INTERVAL 代表 called_every_interval 每多久會被呼叫一次（單位是毫秒(ms)，1s = 1000ms）
-const int INTERVAL = 1000;
 
 /*
+ * 作業一：圈圈叉叉
  * 當中間的九宮格被按下時會呼叫 when_button_clicked 此函數
  * pressed_button 是傳入的參數，代表被按下的按鈕本身。
  * 一些能夠使用的函數範例：
@@ -37,14 +39,28 @@ const int INTERVAL = 1000;
  * char* s = get_button_label(pressed_button));
  * if(s[0] == '\0')
  * 或是
- * if(std::strcmp(s, "") != 0)（要 include<cstring>）
+ * if(std::strcmp(s, "") == 0)（要 include<cstring>）
+ *
+ * 3/27 新增（自由發揮使用）：
+ * change_button_color 能夠改變按鈕的顏色，例如:
+ * change_button_color(pressed_button, "red");
+ * 能將被按下的按鈕顏色改成紅色，能用的顏色非常多，可以自己試試，
+ * 或是也能用指定 RGB 的方式改變顏色，不知道 RGB 是什麼的可以上網查，例如：
+ * for(int i = 0; i < HEIGHT; i++)
+ *     for(int j = 0; j < WIDTH; j++)
+ *         change_button_color(button[i][j], "#FFFFFF");
+ * 這樣能將所有按鈕變成白色
  */
-
 static void when_button_clicked(GtkWidget *pressed_button, gpointer data) {
 	// 請將答案寫在這裡
 	// 範例（可以將下一行註解拿掉看執行結果）：
-	//change_label_text(label, "Jinkela !");
+	// change_label_text(label, "Jinkela !");
 }
 
-gboolean called_every_interval(gpointer data) {
+/* 
+ * 自由發揮使用：
+ * in_every_interval 每 INTERVAL 毫秒（在此檔案最上方）會被呼叫一次
+ * 呼叫 interval_count() 可以得到 in_every_interval 被呼叫了幾次，回傳值是 int
+ */
+void in_every_interval() {
 }
