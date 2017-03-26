@@ -7,10 +7,17 @@ GtkWidget *table;
 GtkWidget *vbox;
 
 
-// label 是畫面上方的文字
+// label 是畫面上方的文字 GtkWidget *label;
 GtkWidget *label;
 // button 是代表畫面上九宮格的陣列，每個元素為一個按鈕
 GtkWidget *button[3][3];
+
+// HEIGHT 跟 WIDTH 決定了中間按鈕的格子數
+const int HEIGHT = 10;
+const int WIDTH = 10;
+
+// INTERVAL 代表 called_every_interval 每多久會被呼叫一次（單位是毫秒(ms)，1s = 1000ms）
+const int INTERVAL = 1000;
 
 /*
  * 當中間的九宮格被按下時會呼叫 when_button_clicked 此函數
@@ -20,7 +27,7 @@ GtkWidget *button[3][3];
  * change_label_text(label, "yo");
  * 會將程式上方的標籤變為 "yo"，
  *
- * change_button_label(widget, "yoo");
+ * change_button_label(pressed_button, "yoo");
  * （在下方函數內呼叫）會將被按下的按鈕上的文字換為 "yoo"，
  *
  * get_button_label(button[1][2]);
@@ -33,11 +40,15 @@ GtkWidget *button[3][3];
  * if(std::strcmp(s, "") != 0)（要 include<cstring>）
  */
 
-int count = 0;
-
 static void when_button_clicked(GtkWidget *pressed_button, gpointer data) {
 	// 請將答案寫在這裡
 	// 範例（可以將下一行註解拿掉看執行結果）：
 	//change_label_text(label, "Jinkela !");
 }
 
+long long int c = 1;
+
+gboolean called_every_interval(gpointer data) {
+	printf("%d\n", c);
+	c++;
+}

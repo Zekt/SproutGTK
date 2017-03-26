@@ -28,6 +28,8 @@ void init(int argc, char *argv[]) {
 
 	gtk_init (&argc, &argv);
 
+	g_timeout_add(INTERVAL, called_every_interval, NULL);
+
 	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	g_signal_connect (window, "delete-event",
 			G_CALLBACK (delete_event), NULL);
@@ -42,9 +44,9 @@ void init(int argc, char *argv[]) {
 	gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 5);
 
 
-	table = gtk_table_new(3,3,TRUE);
-	for(int i = 0; i < 3; ++i) 
-		for(int j = 0; j < 3; ++j) {
+	table = gtk_table_new (HEIGHT, WIDTH, TRUE);
+	for(int i = 0; i < HEIGHT; ++i) 
+		for(int j = 0; j < WIDTH; ++j) {
 			create_button(table, button[i][j], j, j+1, i, i+1);
 		}
 	gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 100);
