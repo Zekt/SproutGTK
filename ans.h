@@ -20,7 +20,7 @@ GtkWidget *button[3][3];
  * change_label_text(label, "yo");
  * 會將程式上方的標籤變為 "yo"，
  *
- * change_button_label(widget, "yoo");
+ * change_button_label(pressed_button, "yoo");
  * （在下方函數內呼叫）會將被按下的按鈕上的文字換為 "yoo"，
  *
  * get_button_label(button[1][2]);
@@ -32,8 +32,6 @@ GtkWidget *button[3][3];
  * 或是
  * if(std::strcmp(s, "") != 0)（要 include<cstring>）
  */
-
-int count = 0;
 
 static void when_button_clicked(GtkWidget *pressed_button, gpointer data) {
 	// 請將答案寫在這裡
