@@ -1,4 +1,3 @@
-#include<cstdio>
 #include"tools.h"
 
 // HEIGHT 跟 WIDTH 決定了中間按鈕的格子數
