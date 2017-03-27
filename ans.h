@@ -60,7 +60,12 @@ static void when_button_clicked(GtkWidget *pressed_button, gpointer data) {
 /* 
  * 自由發揮使用：
  * in_every_interval 每 INTERVAL 毫秒（在此檔案最上方）會被呼叫一次
- * 呼叫 interval_count() 可以得到 in_every_interval 被呼叫了幾次，回傳值是 int
+ * 呼叫 interval_count() 可以得到 in_every_interval 被呼叫了幾次，回傳值是 unsigned long long int
  */
 void in_every_interval() {
+	// 範例：
+	// char buf[10];
+	// std::sprintf(buf, interval_count());
+	// （要 include<cstdio>）
+	// 這樣上方的 label 每隔 INTERVAL 毫秒（預設是 1000 即一秒）會從 0 開始增加 1
 }

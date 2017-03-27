@@ -1,6 +1,6 @@
 #include<gtk/gtk.h>
 
-int _COUNTER = 0;
+unsigned long long int _COUNTER = 0;
 extern void in_every_interval();
 
 // 此函數能改變上方的文字
@@ -36,6 +36,6 @@ gboolean on_every_interval(gpointer data) {
 	in_every_interval();
 }
 
-int count() {
+unsigned long long int interval_count() {
 	return _COUNTER;
 }
