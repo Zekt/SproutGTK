@@ -7,35 +7,48 @@ GtkWidget *table;
 GtkWidget *vbox;
 
 
-// label 是畫面上方的文字
 GtkWidget *label;
-// button 是代表畫面上九宮格的陣列，每個元素為一個按鈕
 GtkWidget *button[3][3];
 
-/*
- * 當中間的九宮格被按下時會呼叫 when_button_clicked 此函數
- * pressed_button 是傳入的參數，代表被按下的按鈕本身。
- * 一些能夠使用的函數範例：
- *
- * change_label_text(label, "yo");
- * 會將程式上方的標籤變為 "yo"，
- *
- * change_button_label(pressed_button, "yoo");
- * （在下方函數內呼叫）會將被按下的按鈕上的文字換為 "yoo"，
- *
- * get_button_label(button[1][2]);
- * 會得到位置為 [1][2] 的按鈕上的文字，回傳值為 char*。
- *
- * 提示：檢查得到的字串是否為空的方法：
- * char* s = get_button_label(pressed_button));
- * if(s[0] == '\0')
- * 或是
- * if(std::strcmp(s, "") != 0)（要 include<cstring>）
- */
+bool clicked[3][3];
+bool finish = 0;
+int click_count = 0;
+int cnt[2][3][3] = {};
+// 0: O 1: X
+// 0: row 1: column 2: cross
 
 static void when_button_clicked(GtkWidget *pressed_button, gpointer data) {
-	// 請將答案寫在這裡
-	// 範例（可以將下一行註解拿掉看執行結果）：
-	//change_label_text(label, "Jinkela !");
+	int r, c;
+	for(int i = 0; i < 3;i++)
+		for(int j = 0; j < 3; j++)
+			if(button[i][j] == pressed_button) {
+				r = i;
+				c = j;
+			}
+	if(clicked[r][c] || click_count == 9 || finish)
+		return;
+	clicked[r][c] = 1;
+	bool isX = click_count%2;
+	if(isX)
+		change_button_label(pressed_button, "X");
+	else
+		change_button_label(pressed_button, "O");
+	cnt[isX][0][r]++;
+	cnt[isX][1][c]++;
+	if(r == c)
+		cnt[isX][2][0]++;
+	if(r+c == 2)
+		cnt[isX][2][1]++;
+	click_count++;
+	if(click_count == 9)
+		change_label_text(label, "Draw!");
+	for(int i = 0; i < 3; i++)
+		for(int j = 0; j < 3; j++)
+			if(cnt[isX][i][j] == 3) {
+				if(isX)
+					change_label_text(label, "X win!");
+				else
+					change_label_text(label, "O win!");
+				finish = 1;
+	}
 }
-
